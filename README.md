@@ -6,6 +6,7 @@ import socket.CarSocketConnection;
 import socket.ICarControlSubscriber;
 import socket.ICarMessage;
 
+```java
 public class Example {
 
     public static void main(String[] args) {
@@ -68,3 +69,4 @@ public class Example {
         carSocket.sendMessage("D;-50;75");
     }
 }
+```
