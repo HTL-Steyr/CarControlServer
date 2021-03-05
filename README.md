@@ -1,11 +1,6 @@
 # CarControlServer
 
-Example
-
-import socket.CarSocketConnection;
-import socket.ICarControlSubscriber;
-import socket.ICarMessage;
-
+##Example
 ```java
 public class Example {
 
