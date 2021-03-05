@@ -47,11 +47,6 @@ public class CarControlServer {
         new Thread() {
             @Override
             public void run() {
-                // driveMotor (0, 100) --> rechts vorwärts
-                // driveMotor(0, -100); --> rechts rückwärts
-                // driveMotor(1, 100); --> links rückwärts
-                // driveMotor(1, -100); //--> links vorwärts
-
                 while (running) {
                     try {
                         Socket connection = socket.accept();
