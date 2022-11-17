@@ -5,8 +5,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CarSocketConnection implements ICarControlPublisher, ICarSocketConnection {
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private int port = 0;
     private String host = "";
@@ -65,12 +68,14 @@ public class CarSocketConnection implements ICarControlPublisher, ICarSocketConn
 
     @Override
     public void sendMessage(String message) {
-        new Thread() {
-            @Override
-            public void run() {
-                outputStream.println(message);
-            }
-        }.start();
+        executor.execute(
+                new Thread() {
+                    @Override
+                    public void run() {
+                        outputStream.println(message);
+                    }
+                }
+        );
     }
 
     @Override
@@ -83,7 +88,7 @@ public class CarSocketConnection implements ICarControlPublisher, ICarSocketConn
                         String msg = inputStream.nextLine();
 
                         CarSocketConnection.this.notifyAll(new CarMessage(CarSocketConnection.this, msg));
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         running = false;
                     }
                 }
