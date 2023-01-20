@@ -43,7 +43,7 @@ public class Car {
     private void setPwm(int channel, int dutyCycle) {
         // if something changes!
         if (dutyCycle != this.channel[channel]) {
-            int period = 25000000;
+            int period = 5000000;
             Pwm pwm = new Pwm(channel);
             pwm.write("enable", "1");
 

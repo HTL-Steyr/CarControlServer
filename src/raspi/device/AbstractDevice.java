@@ -59,7 +59,7 @@ public abstract class AbstractDevice {
     }
 
     public void write(String field, String value) {
-        System.out.println(path + "/" + type + num + "/" + field);
+        System.out.println(path + "/" + type + num + "/" + field + " => " + value);
 
         if (new File(path + "/" + type + num + "/" + field).exists()) {
             try {
